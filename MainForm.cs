@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GlobalHotkeys;
 
 namespace ClipboardHistory
 {
@@ -69,6 +70,7 @@ namespace ClipboardHistory
         {
             ShowInTaskbar = true;
             WindowState = FormWindowState.Normal;
+            Focus();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,6 +82,25 @@ namespace ClipboardHistory
         {
             ShowInTaskbar = true;
             WindowState = FormWindowState.Normal;
+            Focus();
+        }
+
+        private KeyboardHook HotkeyManager = new ();
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            HotkeyManager.KeyPressed += HotkeyManagerOnKeyPressed;
+            HotkeyManager.RegisterHotKey(GlobalHotkeys.ModifierKeys.Alt, Keys.V);
+        }
+
+        private void HotkeyManagerOnKeyPressed(object sender, KeyPressedEventArgs e)
+        {
+            if (e.Modifier == GlobalHotkeys.ModifierKeys.Alt && e.Key == Keys.V)
+            {
+                ShowInTaskbar = true;
+                WindowState = FormWindowState.Normal;
+                Focus();
+            }
         }
     }
 

@@ -131,6 +131,7 @@ namespace ClipboardHistory
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "ClipboardHistory";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.TrayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
