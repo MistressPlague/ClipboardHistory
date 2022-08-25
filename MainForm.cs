@@ -90,12 +90,12 @@ namespace ClipboardHistory
         private void MainForm_Load(object sender, EventArgs e)
         {
             HotkeyManager.KeyPressed += HotkeyManagerOnKeyPressed;
-            HotkeyManager.RegisterHotKey(GlobalHotkeys.ModifierKeys.Alt, Keys.V);
+            HotkeyManager.RegisterHotKey(GlobalHotkeys.ModifierKeys.Win, Keys.V);
         }
 
         private void HotkeyManagerOnKeyPressed(object sender, KeyPressedEventArgs e)
         {
-            if (e.Modifier == GlobalHotkeys.ModifierKeys.Alt && e.Key == Keys.V)
+            if (e.Modifier == GlobalHotkeys.ModifierKeys.Win && e.Key == Keys.V)
             {
                 ShowInTaskbar = true;
                 WindowState = FormWindowState.Normal;
